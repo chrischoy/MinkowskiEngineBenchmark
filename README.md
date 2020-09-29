@@ -1,12 +1,12 @@
 # Minkowski Engine Benchmark
 
-## MinkUNet14
+## MinkUNet14 (25 conv layers)
 
 Ryzen 3700X + Titan RTX
 
 |                                      | v0.5          | speed up    | v0.4.3       |
 |--------------------------------------|---------------|-------------|--------------|
-| Number of Non-zero Elements (Points) | Time          |             | Time         |
+| Number of Non-zero Elements (Points) | Time          | x           | Time         |
 |                               161890 | 0.09865355492 | 3.906438882 | 0.3853840828 |
 |                               323780 |   0.201720953 | 4.181743076 | 0.8435451984 |
 |                               647560 |  0.3909289837 | 4.733338619 |  1.850399256 |

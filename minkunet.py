@@ -25,6 +25,7 @@ import os
 import argparse
 import numpy as np
 from urllib.request import urlretrieve
+from collections import defaultdict
 
 try:
     import open3d as o3d
@@ -62,6 +63,13 @@ if __name__ == "__main__":
     # Define a model and load the weights
     model = MinkUNet14(3, 20).to(device)
     model.eval()
+    print(model)
+
+    num_conv_layers = defaultdict(int)
+    for l in model.modules():
+        if isinstance(l, ME.MinkowskiConvolution) or isinstance(l, ME.MinkowskiConvolutionTranspose):
+            num_conv_layers[l.kernel_generator.kernel_size[0].item()] += 1
+    print(num_conv_layers)
 
     voxel_size = 0.02
     timer = Timer()
