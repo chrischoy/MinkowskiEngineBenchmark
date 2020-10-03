@@ -34,8 +34,8 @@ except ImportError:
 
 import torch
 import MinkowskiEngine as ME
-from examples.minkunet import MinkUNet14, MinkUNet18, MinkUNet34, MinkUNet50
-from examples.common import Timer
+from models.minkunet import MinkUNet14, MinkUNet18, MinkUNet34, MinkUNet50
+from models.common import Timer
 
 # Check if the weights and file exist and download
 if not os.path.isfile("1.ply"):
@@ -61,13 +61,15 @@ if __name__ == "__main__":
     )
     print(f"Using {device}")
     # Define a model and load the weights
-    model = MinkUNet14(3, 20).to(device)
+    model = MinkUNet18(3, 20).to(device)
     model.eval()
     print(model)
 
     num_conv_layers = defaultdict(int)
     for l in model.modules():
-        if isinstance(l, ME.MinkowskiConvolution) or isinstance(l, ME.MinkowskiConvolutionTranspose):
+        if isinstance(l, ME.MinkowskiConvolution) or isinstance(
+            l, ME.MinkowskiConvolutionTranspose
+        ):
             num_conv_layers[l.kernel_generator.kernel_size[0].item()] += 1
     print(num_conv_layers)
 
