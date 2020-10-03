@@ -18,7 +18,7 @@ Ryzen 3700X + Titan RTX
 ![](./assets/minkunet14.png)
 
 
-## Fully Convolutional Geometric Features (FCGF)
+## Fully Convolutional Geometric Features [FCGF](https://github.com/chrischoy/FCGF) (21 conv layers)
 
 ResUNetBN2C on Ryzen 3700X + Titan RTX
 
