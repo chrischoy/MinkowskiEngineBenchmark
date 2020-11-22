@@ -70,7 +70,7 @@ if __name__ == "__main__":
         if isinstance(l, ME.MinkowskiConvolution) or isinstance(
             l, ME.MinkowskiConvolutionTranspose
         ):
-            num_conv_layers[l.kernel_generator.kernel_size[0].item()] += 1
+            num_conv_layers[l.kernel_generator.kernel_size[0]] += 1
     print(num_conv_layers)
 
     voxel_size = 0.02

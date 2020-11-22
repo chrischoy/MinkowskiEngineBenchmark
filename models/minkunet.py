@@ -29,7 +29,7 @@ import MinkowskiEngine as ME
 
 from MinkowskiEngine.modules.resnet_block import BasicBlock, Bottleneck
 
-from examples.resnet import ResNetBase
+from models.resnet import ResNetBase
 
 
 class MinkUNetBase(ResNetBase):
