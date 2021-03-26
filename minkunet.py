@@ -76,12 +76,13 @@ if __name__ == "__main__":
     voxel_size = 0.02
     timer = Timer()
     coords, colors, pcd = load_file(config.file_name)
+    batch_sizes = [1, 2, 4, 6, 8, 10, 12, 14, 16, 20]
     if ME.__version__.split(".")[1] == "5":
         # Measure time
-        for batch_size in [1, 2, 4, 6, 8, 10, 12]:
+        for batch_size in  batch_sizes:
             timer = Timer()
             coordinates = ME.utils.batched_coordinates(
-                [coords / voxel_size for i in range(batch_size)], return_int=False
+                [coords / voxel_size for i in range(batch_size)], dtype=torch.float32
             )
             features = torch.rand(len(coordinates), 3).float()
             with torch.no_grad():
@@ -108,7 +109,7 @@ if __name__ == "__main__":
 
     elif ME.__version__.split(".")[1] == "4":
         # Measure time
-        for batch_size in [1, 2, 4, 6, 8, 10, 12]:
+        for batch_size in batch_sizes:
             timer = Timer()
             coordinates = ME.utils.batched_coordinates(
                 [coords / voxel_size for i in range(batch_size)]
